@@ -1,0 +1,21 @@
+:root{
+    --dark-color: #19283f;
+    --white-color: #e2e2e2;
+ 
+}
+
+
+.cart-btn{
+    background-color: var(--dark-color);
+    padding: 1rem;
+    border-radius: 25%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    max-width: 200px;
+}
+
+.MuiSvgIcon-root{
+    margin: 5px 8px 2px 0;
+}
