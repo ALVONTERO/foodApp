@@ -10,7 +10,7 @@ import Navbar from "react-bootstrap/Navbar";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import './Navbars.css'
+import "./Navbars.css";
 
 function Navbars() {
   const [Counter, setCounter] = useState(0);
@@ -18,9 +18,7 @@ function Navbars() {
     <div>
       <Navbar bg="dark" expand="md">
         <Container>
-          <Navbar.Brand className="text-white">
-            Navbar scroll
-          </Navbar.Brand>
+          <Navbar.Brand className="text-white">Navbar scroll</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Form className="ms-auto">
