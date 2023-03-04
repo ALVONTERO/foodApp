@@ -18,7 +18,7 @@ function Navbars() {
     <div>
       <Navbar bg="dark" expand="md">
         <Container>
-          <Navbar.Brand className="text-white">Navbar scroll</Navbar.Brand>
+          <Navbar.Brand className="text-white">React Meals</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Form className="ms-auto">
