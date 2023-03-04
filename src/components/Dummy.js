@@ -1,15 +1,14 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
 import FoodImage from "../assets/images/food-table.jfif";
 
 function Dummy() {
   return (
-    <div>
-      {" "}
+    <div className="dummy">
       <Container fluid className="px-0 bg-img">
         <img className="img w-100 img-fluid" src={FoodImage} alt="food-table" />
       </Container>
-      <div className="open-qoute p-5 rounded text-white-50">
+      <Col className="open-qoute col-sm-6 text-md-center justify-content-center w-75 m-auto my-4 p-5 rounded text-white-50">
         <h3>Delicious Food, Delivered To You</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -20,7 +19,7 @@ function Dummy() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
-      </div>
+      </Col>
     </div>
   );
 }

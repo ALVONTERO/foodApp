@@ -12,8 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import "./Navbars.css";
 
-function Navbars() {
-  const [Counter, setCounter] = useState(0);
+function Navbars(props) {
   return (
     <div>
       <Navbar bg="dark" expand="md">
@@ -26,7 +25,7 @@ function Navbars() {
                 <ShoppingCartIcon />
                 Your Cart
                 <div className="counter text-white ms-3 p-2 bg-primary rounded-circle">
-                  {Counter}
+                  {props.counter}
                 </div>
               </Button>
             </Form>

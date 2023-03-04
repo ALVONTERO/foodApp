@@ -22,6 +22,7 @@
     max-height: 440px;
     opacity: 0.7;
 }
+
 @keyframes transitionIn {
     from{
         opacity: 0;
@@ -37,15 +38,46 @@
 }
 .App .open-qoute{
     background-color: var(--grey-color);
-    width: 50%;
+     /* width: 50%;
     text-align: center;
     position: relative;
     top: 50%;
     left: 25%;
-    transform: translate(0%,-50%);
+    transform: translate(0%,-50%);  */
     box-shadow: 2px 10px 30px var(--grey-color);
     animation: transitionIn 0.75s;
+    margin: 0;
+    padding: 0;
+}
+
+.dummy{
+    margin: 0;
+    padding: 0;
+}
+
+.App .list-of-food{
+    background-color: var(--grey-color);
+    position: relative;
+}
+.App .list-of-food button{
+    background-color: var(--dark-color);
+    border: none;
+    outline: none;
+    transition: ease-in-out 0.5s;
+}
+.App .list-of-food button:hover{
+    background-color: var(--white-color);
+    border: none;
+    outline: none;
+    transition: ease-in-out 0.5s;
 }
 
 
+.App .after-item{
+    content: "";
+    width: 90%;
+    position: absolute;
+    left: 5%;
+    border-bottom: 1px solid #e2e2e2;
+}
 
