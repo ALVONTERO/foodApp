@@ -8,7 +8,7 @@ function Dummy() {
       <Container fluid className="px-0 bg-img">
         <img className="img w-100 img-fluid" src={FoodImage} alt="food-table" />
       </Container>
-      <Col className="open-qoute col-sm-6 text-md-center justify-content-center w-75 m-auto my-4 p-5 rounded text-white-50">
+      <Col className="open-qoute col-sm-6 text-md-center justify-content-center w-50 m-auto my-4 p-5 rounded text-white-50">
         <h3>Delicious Food, Delivered To You</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
