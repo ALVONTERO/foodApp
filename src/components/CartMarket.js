@@ -5,7 +5,7 @@ function CartMarket(props) {
     <Row className={`mb-2 mt-4 ${props.className}`}>
       <Col className="cart d-flex justify-content-center">
         <h5 className="text-white">{props.dummyItem}</h5>
-        <input className="w-25 h-50 mx-2 p-3 border-0 rounded " type={"text"} readOnly disabled value={props.itemCounter} />
+        <input className="w-25 h-50 mx-2 p-3 border-0 rounded text-white" type={"text"} readOnly disabled value={props.itemCounter} />
       </Col>
       <Col className="cart d-flex justify-content-center">
         <h5 className="text-white">{props.price}</h5>

@@ -11,10 +11,10 @@ function App() {
   const [Counter, setCounter] = useState(0);
   const [itemCounter, setItemCounter] = useState(null);
   const [dummyItems, setDummyItems] = useState([
-    { dummyItem: "Dummy1", price: `50$`, count: 0 },
-    { dummyItem: "Dummy2", price: `40$`, count: 0 },
-    { dummyItem: "Dummy3", price: `30$`, count: 0 },
-    { dummyItem: "Dummy4", price: `80$`, count: 0 },
+    { id: Math.random(3) * 2, dummyItem: "Dummy1", price: `50$`, count: 0 },
+    { id: Math.random(3) * 2, dummyItem: "Dummy2", price: `40$`, count: 0 },
+    { id: Math.random(3) * 2, dummyItem: "Dummy3", price: `30$`, count: 0 },
+    { id: Math.random(3) * 2, dummyItem: "Dummy4", price: `80$`, count: 0 },
   ]);
   const [Cart, setCart] = useState([]);
   const [Show, setShow] = useState(false);
@@ -25,25 +25,25 @@ function App() {
   }, [Counter, Cart]);
 
   const handleAdd = (...items) => {
-    let newCart = Cart.filter((item) => {
-      return item.dummyItem === items[0];
+    let counter = 0;
+    Cart.map((i) => {
+      return i.dummyItem === items[0] ? (counter = i.count) : counter;
     });
-    const indexOfItem = Cart.indexOf(newCart.dummyItem);
-    console.log(newCart);
-    newCart.length === 0
-      ? setCart((prevState) => {
-          return [
-            ...prevState,
-            { dummyItem: items[0], price: items[1], count: items[2] },
-          ];
-        })
-      : setCart((prevState) => {
-          return [
-            ...prevState,
-            { dummyItem: items[0], price: items[1], count: items[2] + newCart.length },
-          ];
-        });
+    let newCart = Cart.filter((item) => item.dummyItem !== items[0]);
+    setCart((prevState) => {
+      return [
+        ...newCart,
+        {
+          dummyItem: items[0],
+          price: items[1],
+          count: [...prevState.filter((item) => items[0] === item.dummyItem)]
+            ? counter + 1
+            : counter,
+        },
+      ];
+    });
   };
+
   const onSubmit = (e) => {
     setCounter((prevState) => {
       return prevState + 1;
@@ -111,7 +111,7 @@ function App() {
                 <Row className="w-100 text-center" key={i}>
                   <CartMarket
                     key={i}
-                    itemCounter={itemCounter}
+                    itemCounter={item.count}
                     className=""
                     item={JSON.stringify(Object.values(item))}
                     remove={removeHandler}
