@@ -92,6 +92,20 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+
+.App .cartage{
+    float: left;
+    position: fixed;
+    opacity: 0.75;
+    height: fit-content;
+    top: 12%;
+    left: 25%;
+    z-index: 2;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 /* .App .bg-images img  {
     
     z-index: 1;

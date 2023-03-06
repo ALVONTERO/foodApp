@@ -9,32 +9,63 @@ import blackImg from "./assets/images/black.webp";
 import { Col, Row } from "react-bootstrap";
 function App() {
   const [Counter, setCounter] = useState(0);
+  const [itemCounter, setItemCounter] = useState(null);
   const [dummyItems, setDummyItems] = useState([
-    { dummyItem: "Dummy1", price: `50$` },
-    { dummyItem: "Dummy2", price: `40$` },
-    { dummyItem: "Dummy3", price: `30$` },
-    { dummyItem: "Dummy4", price: `80$` },
+    { dummyItem: "Dummy1", price: `50$`, count: 0 },
+    { dummyItem: "Dummy2", price: `40$`, count: 0 },
+    { dummyItem: "Dummy3", price: `30$`, count: 0 },
+    { dummyItem: "Dummy4", price: `80$`, count: 0 },
   ]);
   const [Cart, setCart] = useState([]);
-  const [Show, setShow] = useState(false)
+  const [Show, setShow] = useState(false);
   useEffect(() => {
     console.log(Cart);
 
     return () => {};
   }, [Counter, Cart]);
 
+  const handleAdd = (...items) => {
+    let newCart = Cart.filter((item) => {
+      return item.dummyItem === items[0];
+    });
+    const indexOfItem = Cart.indexOf(newCart.dummyItem);
+    console.log(newCart);
+    newCart.length === 0
+      ? setCart((prevState) => {
+          return [
+            ...prevState,
+            { dummyItem: items[0], price: items[1], count: items[2] },
+          ];
+        })
+      : setCart((prevState) => {
+          return [
+            ...prevState,
+            { dummyItem: items[0], price: items[1], count: items[2] + newCart.length },
+          ];
+        });
+  };
   const onSubmit = (e) => {
     setCounter((prevState) => {
       return prevState + 1;
     });
   };
-  const cartClicked = (e) => { 
+  const cartClicked = (e) => {
     e.preventDefault();
-    return setShow(!Show)
-   }
+    return setShow(!Show);
+  };
+  const removeHandler = (e) => {
+    e.preventDefault();
+    setCounter(Counter - 1);
+    const x = JSON.parse(e.target.value);
+    let newCart = Cart.filter((i) => i.dummyItem != x[0]);
+    setCart(newCart);
+  };
   return (
     <div className="App">
-      <div onClick={cartClicked} className={`d-${Show?"block":"none"} bg-images`}>
+      <div
+        onClick={cartClicked}
+        className={`d-${Show ? "block" : "none"} bg-images`}
+      >
         <img className="w-100 float-center  " src={blackImg} />
       </div>
       <Navbars click={cartClicked} counter={Counter} />
@@ -51,14 +82,9 @@ function App() {
                 </Col>
                 <Col
                   lg={6}
-                  onClick={() => {
-                    setCart((prevState) => {
-                      return [
-                        ...prevState,
-                        { dummyItem: item.dummyItem, price: item.price },
-                      ];
-                    });
-                  }}
+                  onClick={() =>
+                    handleAdd(item.dummyItem, item.price, item.count)
+                  }
                   className="ms-auto col-md-4"
                 >
                   <button
@@ -77,11 +103,30 @@ function App() {
           );
         })}
       </Card>
-      {Cart.map((item, i) => {
-        return (
-          <CartMarket key={i} dummyItem={item.dummyItem} price={item.price} />
-        );
-      })}
+      {Cart.length === 0 ? null : (
+        <Card className={`d-${Show ? "block" : "none"} cartage`}>
+          {Cart.map((item, i) => {
+            return (
+              <>
+                <Row className="w-100 text-center" key={i}>
+                  <CartMarket
+                    key={i}
+                    itemCounter={itemCounter}
+                    className=""
+                    item={JSON.stringify(Object.values(item))}
+                    remove={removeHandler}
+                    dummyItem={item.dummyItem}
+                    price={item.price}
+                  />
+                  <Row>
+                    <div className="after-item" key={Math.random()}></div>
+                  </Row>
+                </Row>
+              </>
+            );
+          })}
+        </Card>
+      )}
     </div>
   );
 }
